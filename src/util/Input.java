@@ -56,4 +56,56 @@ public class Input {
         return Double.parseDouble(_input.nextLine());
     }
 
+    public String getPhoneNumber() {
+        String phoneNumber = _input.nextLine();
+
+        if (phoneNumber.length() == 7 || phoneNumber.length() == 10) {
+
+        } else {
+            getPhoneNumber(); //recurrsion if the phone number is the incorrect length
+        }
+
+
+        StringBuilder formatedNumber = new StringBuilder();
+
+        if (phoneNumber.length() == 7) {
+
+            for (int i = 0; i < phoneNumber.length() + 1; i++) {
+
+                if (i == 3) {
+                    formatedNumber.append('-'); //adds the dash if we are at the 3rd character
+                    continue;
+                } else if (i > 3) {
+                    formatedNumber.append(phoneNumber.charAt(i - 1)); //this avoids arrayOutOfBounds
+                    continue;
+                }
+
+                formatedNumber.append(phoneNumber.charAt(i));
+
+            }
+
+        } else {
+
+            for (int i = 0; i < phoneNumber.length() + 2; i++) {
+
+                if (i == 3 || i == 7) {
+                    formatedNumber.append('-'); //adds the dash if we are at the 3rd character
+                    continue;
+                } else if (i > 7) {
+                    formatedNumber.append(phoneNumber.charAt(i - 2)); //this avoids arrayOutOfBounds
+                    continue;
+                } else if (i > 3) {
+                    formatedNumber.append(phoneNumber.charAt(i - 1)); //this avoids arrayOutOfBounds
+                    continue;
+                }
+                formatedNumber.append(phoneNumber.charAt(i));
+
+            }
+
+        }
+
+        return formatedNumber.toString();
+
+    }
+
 }
