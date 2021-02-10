@@ -59,12 +59,19 @@ public class App {
         
         System.out.println("");
         System.out.println("---------------------------------");
+        String header = padRight("Name",40);
+        System.out.println(header + " | Number");
+        System.out.println("---------------------------------");
         for(String line : data){
             System.out.println(line);
         }
         System.out.println("---------------------------------");
         System.out.println("");
 
+    }
+
+    public static String padRight(String s, int n) {
+        return String.format("%-" + n + "s", s);
     }
 
     public static void addContact(){
@@ -75,11 +82,14 @@ public class App {
         System.out.println("");
 
         inputHandler.getString();
-        contact.append(inputHandler.getString());
+        String name = padRight(inputHandler.getString(),30
+        );
+        contact.append(name);
 
         System.out.println("");
         System.out.println("What is the contacts number?: ");
-        String phone = inputHandler.getPhoneNumber();
+        String phone = padRight(inputHandler.getPhoneNumber(),30
+        );
         System.out.println("");
         contact.append(" | ");
         contact.append(phone);
