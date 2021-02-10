@@ -79,10 +79,10 @@ public class App {
 
         System.out.println("");
         System.out.println("What is the contacts number?: ");
+        String phone = inputHandler.getPhoneNumber();
         System.out.println("");
-
         contact.append(" | ");
-        contact.append(inputHandler.getString());
+        contact.append(phone);
 
         ArrayList<String> output = new ArrayList<String>();
         output.add(contact.toString());
