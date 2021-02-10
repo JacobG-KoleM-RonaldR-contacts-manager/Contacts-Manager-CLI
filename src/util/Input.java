@@ -26,13 +26,13 @@ public class Input {
     }
 
     public int getInt(){
-        
+
         return _input.nextInt();
 
     }
 
     public int getInt(int min, int max){
-        
+
         int n = _input.nextInt();
 
         if(n >= min && n <= max){
@@ -62,49 +62,19 @@ public class Input {
         if (phoneNumber.length() == 7 || phoneNumber.length() == 10) {
 
         } else {
-            getPhoneNumber(); //recurrsion if the phone number is the incorrect length
+            System.out.println("The phone number you entered is not the correct lenght. Please enter a 7 or 10 digit phone number with no hyphens: ");
+            return getPhoneNumber(); //recursion if the phone number is the incorrect length
         }
 
-
-        StringBuilder formatedNumber = new StringBuilder();
 
         if (phoneNumber.length() == 7) {
-
-            for (int i = 0; i < phoneNumber.length() + 1; i++) {
-
-                if (i == 3) {
-                    formatedNumber.append('-'); //adds the dash if we are at the 3rd character
-                    continue;
-                } else if (i > 3) {
-                    formatedNumber.append(phoneNumber.charAt(i - 1)); //this avoids arrayOutOfBounds
-                    continue;
-                }
-
-                formatedNumber.append(phoneNumber.charAt(i));
-
-            }
+            return phoneNumber.replaceFirst("(\\d{3})(\\d+)", "$1-$2");
 
         } else {
+            return phoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
 
-            for (int i = 0; i < phoneNumber.length() + 2; i++) {
-
-                if (i == 3 || i == 7) {
-                    formatedNumber.append('-'); //adds the dash if we are at the 3rd character
-                    continue;
-                } else if (i > 7) {
-                    formatedNumber.append(phoneNumber.charAt(i - 2)); //this avoids arrayOutOfBounds
-                    continue;
-                } else if (i > 3) {
-                    formatedNumber.append(phoneNumber.charAt(i - 1)); //this avoids arrayOutOfBounds
-                    continue;
-                }
-                formatedNumber.append(phoneNumber.charAt(i));
-
-            }
 
         }
-
-        return formatedNumber.toString();
 
     }
 
